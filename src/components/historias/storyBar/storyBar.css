@@ -1,0 +1,13 @@
+/* --- StoryBar --- */
+.story-bar-container {
+  display: flex;
+  gap: 16px; /* Espacio entre cada historia */
+  padding: 16px 0;
+  overflow-x: auto; /* Permite scrollear horizontalmente si hay muchas historias */
+  scrollbar-width: none; /* Oculta la barra de scroll en Firefox */
+}
+
+/* Oculta la barra de scroll en Chrome/Safari/Edge */
+.story-bar-container::-webkit-scrollbar {
+  display: none;
+}
