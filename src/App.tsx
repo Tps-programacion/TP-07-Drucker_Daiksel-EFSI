@@ -3,6 +3,8 @@ import type { Story } from './components/types/story';
 import StoryBar from './components/historias/storyBar/StoryBar';
 import './App.css'
 import { catApi } from './components/services/catApi';
+import Nav from "./components/nav/Nav";
+import Feed from "./components/feed/Feed";
 
 function App() {
   const [stories, setStories] = useState<Story[]>([
@@ -17,9 +19,14 @@ function App() {
 
   return (
     <>
+      <Nav />
       <StoryBar stories={stories} />
+
+      <main className="main-content">
+        <Feed />
+      </main>
     </>
-  );
+  )
 }
 
-export default App
+export default App;
