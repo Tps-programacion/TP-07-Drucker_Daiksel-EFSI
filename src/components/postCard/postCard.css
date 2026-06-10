@@ -1,0 +1,43 @@
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+.profile-pic {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+}
+
+.username {
+    font-weight: 600;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 12px;
+
+    font-size: 22px;
+}
+
+.left-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.likes {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.caption {
+    margin-top: 8px;
+}
