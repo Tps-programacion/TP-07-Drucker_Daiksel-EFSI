@@ -9,6 +9,7 @@ import users from "./data/users";
 import descs from "./data/descs";
 import {getCats}  from './services/catApi.ts';
 import type {CatImage} from "./services/catApi.ts"
+import SidebarDerecho from "./components/barraDerecha/sidebarDerecho/SidebarDerecho.tsx"
 
 function App() {
   const [usuarios, setUsuarios] = useState<Usuarios[]>([]);
@@ -72,7 +73,7 @@ function App() {
 
           {/* LADO DERECHO: El hueco perfecto para tu próximo componente */}
           <div className="right-sidebar-placeholder">
-             {/* Cuando crees el componente nuevo, lo vas a poner acá */}
+             <SidebarDerecho usuarios={usuarios} />
           </div>
 
         </div>

@@ -1,0 +1,51 @@
+.perfil-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.info-perfil-principal {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+}
+
+/* La foto principal es un poquito más grande que las de sugerencias */
+.foto-grande {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.textos-perfil {
+    display: flex;
+    flex-direction: column;
+}
+
+.username-principal {
+    font-weight: 600;
+    font-size: 14px;
+    color: #262626;
+}
+
+.nombre-real {
+    font-size: 14px;
+    color: #737373;
+}
+
+/* Botón de "Cambiar" específico para el perfil principal */
+.btn-accion-cambiar {
+    background: none;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: #0095f6;
+    cursor: pointer;
+}
+
+.btn-accion-cambiar:hover {
+    color: #00376b;
+}

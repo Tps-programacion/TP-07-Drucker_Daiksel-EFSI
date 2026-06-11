@@ -1,0 +1,60 @@
+.sugerencia-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-sugerencia {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.foto-chica {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.textos-sugerencia {
+    display: flex;
+    flex-direction: column;
+}
+
+.username-sugerencia {
+    font-weight: 600;
+    font-size: 14px;
+    color: #262626;
+}
+
+.motivo-sugerencia {
+    font-size: 12px;
+    color: #737373;
+}
+
+/* --- BOTONES DE SEGUIR / SIGUIENDO --- */
+.btn-accion {
+    background: none;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-accion.azul {
+    color: #0095f6; /* Color de botón "Seguir" */
+}
+
+.btn-accion.azul:hover {
+    color: #00376b;
+}
+
+.btn-accion.gris {
+    color: #262626; /* Color de botón "Siguiendo" */
+}
+
+.btn-accion.gris:hover {
+    color: #8e8e8e;
+}

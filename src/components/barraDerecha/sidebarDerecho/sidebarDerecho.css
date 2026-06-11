@@ -1,0 +1,54 @@
+/* Contenedor principal: Se queda fijo al scrollear para no perderse hacia arriba */
+.sidebar-derecho {
+    width: 100%;
+    position: sticky;
+    top: 30px; 
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px; /* Para que quede bien alineado con las historias del feed */
+}
+
+/* --- ENCABEZADO DE SUGERENCIAS --- */
+.sugerencias-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.titulo-sugerencias {
+    font-size: 14px;
+    font-weight: 600;
+    color: #737373;
+}
+
+.btn-ver-todo {
+    background: none;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: #262626;
+    cursor: pointer;
+}
+
+.btn-ver-todo:hover {
+    color: #8e8e8e;
+}
+
+/* --- LISTA DE SUGERENCIAS --- */
+.sugerencias-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+/* --- FOOTER --- */
+.sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 12px;
+    color: #c7c7c7;
+    line-height: 1.5;
+}
