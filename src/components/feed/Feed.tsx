@@ -1,61 +1,29 @@
-import { useEffect, useState } from "react";
+// Ya no necesitamos importar hooks de React ni archivos de datos
 import PostCard from "../postCard/PostCard";
-import { getCats } from "../../services/catApi";
-import users from "../../data/users";
-import  descs  from "../../data/descs";
+import type { Post } from "../../types/Post";
 
-function Feed() {
+// 1. Definimos claramente qué recibe el componente
+interface FeedProps {
+  posts: Post[];
+}
 
-    const [cats, setCats] = useState([]);
-
-    useEffect(() => {
-
-        async function loadCats() {
-
-            const data = await getCats();
-
-            const posts = data.map((cat) => {
-
-                const randomUser =
-                    users[Math.floor(Math.random() * users.length)];
-
-                const randomDesc =
-                    descs[Math.floor(Math.random() * descs.length)];
-
-                return {
-                    ...cat,
-                    username: randomUser.username,
-                    fotoPerfil: randomUser.fotoPerfil,
-                    caption: randomDesc,
-                    likes: Math.floor(Math.random() * 5000) + 100
-                };
-            });
-
-            setCats(posts);
-        }
-
-        loadCats();
-
-    }, []);
-
-    return (
-        <div className="feed">
-
-            {cats.map((cat) => (
-
-                <PostCard
-                    key={cat.id}
-                    image={cat.url}
-                    username={cat.username}
-                    fotoPerfil={cat.fotoPerfil}
-                    caption={cat.caption}
-                    likes={cat.likes}
-                />
-
-            ))}
-
-        </div>
-    );
+// 2. Destructuramos 'posts' y le asignamos la interfaz FeedProps
+function Feed({ posts }: FeedProps) {
+  
+  return (
+    <div className="feed">
+      {posts.map((post) => (
+        <PostCard
+          key={post.id}
+          image={post.url} // Usamos la url de la imagen del gato
+          username={post.usuario.username} // Entramos al objeto usuario
+          fotoPerfil={post.usuario.fotoPerfil} // Entramos al objeto usuario
+          caption={post.caption}
+          likes={post.likes}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default Feed;

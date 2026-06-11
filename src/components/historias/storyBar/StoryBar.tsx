@@ -1,5 +1,5 @@
 import StoryItem from "../storyItem/StoryItem";
-import type { Usuarios } from "../../types/Usuario";
+import type { Usuarios } from "../../../types/Usuario";
 import './storyBar.css';
 
 

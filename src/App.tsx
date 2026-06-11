@@ -1,44 +1,40 @@
 import { useEffect, useState } from 'react'
-import type { Usuarios } from './components/types/Usuario';
-import type { Post } from './components/types/Post';
+import type { Usuarios } from './types/Usuario.ts';
+import type { Post } from './types/Post.ts';
 import StoryBar from './components/historias/storyBar/StoryBar';
 import './App.css'
-import { catApi } from './components/services/catApi';
 import Nav from "./components/nav/Nav";
 import Feed from "./components/feed/Feed";
 import users from "./data/users"; 
 import descs from "./data/descs";
+import {getCats}  from './services/catApi.ts';
+import type {CatImage} from "./services/catApi.ts"
 
 function App() {
   const [usuarios, setUsuarios] = useState<Usuarios[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    function getUsers () : Usuarios[]{
+    function getUsers (){
       const usuariosParaHistorias: Usuarios[] = users.map((user, index) => ({
       id: index.toString(),
       username: user.username,
       fotoPerfil: user.fotoPerfil
     }));
-
-    return usuariosParaHistorias;
+    return usuariosParaHistorias
   }
     
-    async function getPosts(usuariosParaHistorias : Usuarios[]) {
+   async function fetchAndSetPosts(usuariosParaHistorias : Usuarios[]) {
       try {
-        // Llamamos a la API usando la función que tenían armada
-        const data = await catApi.getCat();
-        const postsGenerados: Post[] = data.map((cat: any) => {
+        const data = await getCats();
+        const postsGenerados: Post[] = data.map((cat: CatImage) => {
           
-          // índice al azar basado en los usuarios que ya armaste
           const randomIndexUser = Math.floor(Math.random() * usuariosParaHistorias.length);
-          // Agarramos el usuario completo (que ya tiene el ID, nombre y foto)
           const randomUser = usuariosParaHistorias[randomIndexUser];
-          // Elegimos una descripción al azar de tu archivo descs.js
+          
           const randomIndexDesc = Math.floor(Math.random() * descs.length);
           const randomDesc = descs[randomIndexDesc];
 
-          // Retornamos el objeto Post cumpliendo con la interfaz
           return {
             id: cat.id,
             url: cat.url, 
@@ -48,26 +44,40 @@ function App() {
           };
         });
 
+        //Guardamos los posts listos en el estado directamente acá
+        setPosts(postsGenerados);
+
       } catch (error) {
         console.error("Error al traer los gatos para los posts:", error);
       }
     }
-    const usuariosParaHistorias = getUsers();
-    setUsuarios(usuariosParaHistorias);
-    const posts : Post[] = getPosts(usuariosParaHistorias);
-    setPosts();
+    const usuariosListos = getUsers();
+    setUsuarios(usuariosListos); // Guardamos en el estado para que se dibujen las historias
+    fetchAndSetPosts(usuariosListos);
     
   }, []);
 
   return (
-    <>
+    <div className="app"> {/* Aseguramos un contenedor general */}
       <Nav />
-      <StoryBar usuarioStory={usuarios} />
 
       <main className="main-content">
-        <Feed />
+        <div className="feed-and-suggestions-wrapper">
+          
+          {/* LADO IZQUIERDO: Historias y Feed */}
+          <div className="feed-container">
+            <StoryBar usuarioStory={usuarios} />
+            <Feed posts={posts}/>
+          </div>
+
+          {/* LADO DERECHO: El hueco perfecto para tu próximo componente */}
+          <div className="right-sidebar-placeholder">
+             {/* Cuando crees el componente nuevo, lo vas a poner acá */}
+          </div>
+
+        </div>
       </main>
-    </>
+    </div>
   )
 }
 
