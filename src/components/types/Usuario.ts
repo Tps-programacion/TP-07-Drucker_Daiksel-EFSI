@@ -1,4 +1,4 @@
-export interface Story {
+export interface Usuarios {
   id: string;
   fotoPerfil: string;
   username: string;
